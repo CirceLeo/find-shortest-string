@@ -1,5 +1,13 @@
 function findShortestString(arr) {
-  // type your code here
+  let currentShortest = arr[0]
+  let shortestLength = currentShortest.length 
+  arr.forEach(string => {
+    if (string.length < shortestLength){
+      currentShortest = string
+      shortestLength = currentShortest.length
+    }
+  });
+  return currentShortest
 }
 
 if (require.main === module) {
@@ -18,7 +26,15 @@ if (require.main === module) {
   console.log("=>", findShortestString(['flower', 'juniper', 'lily', 'dadelion']));
 
   // BENCHMARK HERE
+  let iterations = 100;
+  console.time('function 1')
+  for (let i = 0; i < iterations; i++){
+    findShortestString(['flower', 'juniper', 'lily', 'dandelion'])
+  }
+  console.timeEnd('function 1')
+
 }
+
 
 module.exports = findShortestString;
 
